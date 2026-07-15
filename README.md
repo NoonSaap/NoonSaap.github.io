@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 2.5 seconds
-Output:
 # AI 실전 노트
 
 눈삽이 운영하는 개인 AI 블로그입니다. Astro로 정적 생성하며 GitHub Pages에 배포합니다.
@@ -36,4 +33,3 @@ readingMinutes: 5
 ```
 
 `draft: true`인 글은 정적 페이지, 목록, RSS에 포함되지 않습니다.
-
