@@ -5,6 +5,8 @@ publishedAt: 2026-07-14
 category: "도구 비교"
 tags: ["AI 도구", "Perplexity", "GitHub Copilot"]
 readingMinutes: 9
+image: "/images/posts/ai-tool-selection.jpg"
+imageAlt: "검색, 문서 분석, 코딩 작업에 맞는 AI 도구를 고르는 작업대"
 ---
 
 AI 도구를 고를 때 기능 목록부터 보면 거의 모든 제품이 좋아 보입니다. “최신 모델”, “긴 문맥”, “에이전트” 같은 표현만으로는 내 일을 줄여 줄 도구인지 판단하기 어렵습니다.

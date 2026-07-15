@@ -1,0 +1,25 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+  updatedAt?: string;
+}
+
+const { title, description, eyebrow = 'SITE POLICY', updatedAt = '2026년 7월 16일' } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <header class="page-hero shell policy-hero">
+    <p class="eyebrow"><span>{eyebrow}</span></p>
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <p class="policy-updated">최종 업데이트: {updatedAt}</p>
+  </header>
+  <article class="article-shell policy-content">
+    <div class="prose"><slot /></div>
+  </article>
+</BaseLayout>
+

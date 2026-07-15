@@ -6,6 +6,8 @@ category: "업무 활용"
 tags: ["AI 리서치", "NotebookLM", "검증"]
 featured: true
 readingMinutes: 10
+image: "/images/posts/ai-practical-workflow.jpg"
+imageAlt: "자료 수집부터 사람의 최종 검토까지 이어지는 AI 조사 흐름"
 ---
 
 AI에게 질문하면 그럴듯한 답은 금방 얻을 수 있습니다. 문제는 그 답을 보고서, 기획안, 고객 안내문처럼 **틀리면 곤란한 업무 자료**에 넣을 때입니다. 링크가 있어도 실제로 주장을 뒷받침하지 않거나, 작년 정책을 최신 정보처럼 설명하는 경우가 있기 때문입니다.

@@ -342,9 +342,16 @@ button, input, textarea { font: inherit; }
 .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; padding-block: 62px; }
 .footer-title { margin: 0 0 8px; color: var(--ink); font-size: 1.25rem; font-weight: 900; }
 .footer-grid p:not(.footer-title) { max-width: 540px; margin: 0; color: var(--ink-soft); font-size: 0.86rem; }
-.footer-links { display: flex; align-items: start; gap: 22px; font-size: 0.82rem; font-weight: 850; }
+.footer-links { display: flex; max-width: 520px; flex-wrap: wrap; align-items: start; justify-content: flex-end; gap: 14px 22px; font-size: 0.82rem; font-weight: 850; }
 .footer-links a { padding-bottom: 3px; border-bottom: 1px solid var(--ink); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-block: 20px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.7rem; font-weight: 700; }
+
+.policy-hero { position: relative; }
+.policy-hero h1 { max-width: 900px; }
+.policy-updated { margin-top: 18px !important; font-size: 0.78rem !important; font-weight: 750; }
+.policy-content { padding-top: 52px; }
+.policy-content .prose h2:first-of-type { margin-top: 0; }
+.policy-button { width: fit-content; margin-top: 8px; color: #fff !important; text-decoration: none !important; }
 
 @media (max-width: 900px) {
   .header-inner { grid-template-columns: 1fr auto; }
@@ -392,6 +399,7 @@ button, input, textarea { font: inherit; }
   .prose table { display: block; overflow-x: auto; white-space: nowrap; }
   .article-meta { justify-content: flex-start; }
   .footer-grid { grid-template-columns: 1fr; }
+  .footer-links { justify-content: flex-start; }
   .footer-bottom { align-items: flex-start; flex-direction: column; }
 }
 

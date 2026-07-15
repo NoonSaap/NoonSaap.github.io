@@ -14,7 +14,10 @@ const blog = defineCollection({
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     readingMinutes: z.number().int().positive().optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
   }),
 });
 
 export const collections = { blog };
+

@@ -3,6 +3,7 @@ export const SITE = {
   author: '눈삽',
   description: '빠르게 변하는 AI를 이해하고, 실제로 써먹는 방법을 기록합니다.',
   url: 'https://noonsaap.github.io',
+  defaultImage: '/images/posts/ai-practical-workflow.jpg',
 };
 
 export const CATEGORY_DESCRIPTIONS: Record<string, string> = {
@@ -18,3 +19,4 @@ export const formatDate = (date: Date) =>
     month: 'long',
     day: 'numeric',
   }).format(date);
+

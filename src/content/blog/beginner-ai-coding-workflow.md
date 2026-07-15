@@ -5,6 +5,8 @@ publishedAt: 2026-07-13
 category: "AI 코딩"
 tags: ["GitHub Copilot", "VS Code", "테스트"]
 readingMinutes: 11
+image: "/images/posts/ai-coding-workflow.jpg"
+imageAlt: "계획, 작은 코드 변경, 테스트, diff 검토가 반복되는 AI 코딩 흐름"
 ---
 
 AI 코딩 도구를 처음 쓰면 “할 일 앱 만들어 줘”처럼 결과 전체를 요청하기 쉽습니다. 코드는 빠르게 생기지만, 오류가 났을 때 어느 부분을 고쳐야 하는지 알기 어렵고 기존 기능이 조용히 망가질 수도 있습니다.

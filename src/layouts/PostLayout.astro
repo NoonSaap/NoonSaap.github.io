@@ -17,12 +17,15 @@ const jsonLd = {
   datePublished: post.data.publishedAt.toISOString(),
   dateModified: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
   author: { '@type': 'Person', name: SITE.author },
-  publisher: { '@type': 'Person', name: SITE.author },
+  publisher: { '@type': 'Person', name: SITE.author, url: `${SITE.url}/about/` },
+  image: post.data.image ? new URL(post.data.image, SITE.url).toString() : undefined,
+  keywords: post.data.tags.join(', '),
+  inLanguage: 'ko-KR',
   mainEntityOfPage: canonical.toString(),
 };
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} canonical={canonical}>
+<BaseLayout title={post.data.title} description={post.data.description} canonical={canonical} image={post.data.image} imageAlt={post.data.imageAlt} type="article">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="article-shell">
     <header class="article-header">
@@ -48,3 +51,4 @@ const jsonLd = {
     </footer>
   </article>
 </BaseLayout>
+
