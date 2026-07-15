@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORY_DESCRIPTIONS } from '../../lib/site';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const counts = posts.reduce<Record<string, number>>((acc, post) => {
+  acc[post.data.category] = (acc[post.data.category] ?? 0) + 1;
+  return acc;
+}, {});
+const categories = Object.entries(counts).sort(([a], [b]) => a.localeCompare(b, 'ko'));
+---
+
+<BaseLayout title="주제" description="AI 실전 노트를 주제별로 찾아보세요.">
+  <section class="page-hero shell">
+    <p class="eyebrow"><span>TOPICS</span></p>
+    <h1>주제별 노트</h1>
+    <p>필요한 순간에 바로 꺼내 볼 수 있도록 관심사별로 묶었습니다.</p>
+  </section>
+  <section class="section shell">
+    <div class="category-grid category-grid--large">
+      {categories.map(([category, count], index) => (
+        <a class="category-card" href={`/categories/${encodeURIComponent(category)}/`}>
+          <span class="category-index">0{index + 1}</span>
+          <h2>{category}</h2>
+          <p>{CATEGORY_DESCRIPTIONS[category] ?? 'AI를 이해하는 데 도움이 되는 글'}</p>
+          <span class="category-count">노트 {count}개</span>
+          <span class="category-arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
