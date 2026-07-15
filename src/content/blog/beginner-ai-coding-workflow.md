@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 2.1 seconds
-Output:
 ---
 title: "초보자를 위한 GitHub Copilot 코딩 루프: 계획부터 diff 검토까지"
 description: "VS Code와 GitHub Copilot으로 작은 기능을 추가하는 과정을 파일 탐색, 구현, 테스트, diff 검토 순서로 따라 합니다."

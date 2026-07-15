@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 1.9 seconds
-Output:
 ---
 title: "검색·문서 분석·코딩: 작업별 AI 도구 선택 실전 가이드"
 description: "Perplexity, NotebookLM, GitHub Copilot을 같은 기준으로 비교하고, 실제 업무에 맞는 도구를 30분 안에 고르는 방법을 설명합니다."

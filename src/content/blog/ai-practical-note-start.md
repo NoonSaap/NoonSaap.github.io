@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 1.8 seconds
-Output:
 ---
 title: "AI 답변을 업무 자료로 바꾸는 4단계 검증법"
 description: "Perplexity로 자료를 찾고 NotebookLM으로 근거를 좁힌 뒤, 원문 확인과 실행 기록까지 남기는 실제 조사 흐름을 소개합니다."
