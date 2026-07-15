@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { CATEGORY_DESCRIPTIONS } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const categories = [...new Set(posts.map((post) => post.data.category))];
+  return categories.map((category) => ({
+    params: { category },
+    props: { category, posts: posts.filter((post) => post.data.category === category) },
+  }));
+}
+
+const { category, posts } = Astro.props;
+posts.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<BaseLayout title={category} description={CATEGORY_DESCRIPTIONS[category]}>
+  <section class="page-hero shell">
+    <p class="eyebrow"><span>CATEGORY</span></p>
+    <h1>{category}</h1>
+    <p>{CATEGORY_DESCRIPTIONS[category] ?? `${category} 주제의 글을 모았습니다.`}</p>
+  </section>
+  <section class="section shell archive-layout">
+    <aside class="archive-aside"><p><strong>{posts.length}</strong>개의 노트</p></aside>
+    <div class="post-list">{posts.map((post) => <PostCard post={post} />)}</div>
+  </section>
+</BaseLayout>
