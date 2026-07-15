@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/site';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+---
+
+<article class:list={['post-card', { 'post-card--featured': featured }]}>
+  <div class="post-card-topline">
+    <a class="category-link" href={`/categories/${encodeURIComponent(post.data.category)}/`}>
+      {post.data.category}
+    </a>
+    <span>{formatDate(post.data.publishedAt)}</span>
+  </div>
+  <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+  <p>{post.data.description}</p>
+  <div class="post-card-footer">
+    <div class="tag-list" aria-label="태그">
+      {post.data.tags.slice(0, 3).map((tag) => <span>#{tag}</span>)}
+    </div>
+    <a class="read-link" href={`/blog/${post.id}/`} aria-label={`${post.data.title} 읽기`}>읽기 <span>→</span></a>
+  </div>
+</article>
