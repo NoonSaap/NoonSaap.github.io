@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { CATEGORY_DESCRIPTIONS } from '../lib/site';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const featured = posts.find((post) => post.data.featured) ?? posts[0];
+const latest = posts.filter((post) => post.id !== featured?.id).slice(0, 4);
+const categories = [...new Set(posts.map((post) => post.data.category))];
+---
+
+<BaseLayout>
+  <section class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow"><span>눈삽의 개인 AI 블로그</span></p>
+      <h1>AI를 이해하고,<br /><em>오늘 바로 써먹습니다.</em></h1>
+      <p class="hero-description">
+        쏟아지는 AI 소식에서 중요한 것만 골라 직접 확인합니다.
+        초보 개발자도 따라 할 수 있는 설명과 실전 예제로 남깁니다.
+      </p>
+      <div class="hero-actions">
+        <a class="button button--primary" href="/blog/">최신 글 읽기 <span>→</span></a>
+        <a class="button button--ghost" href="/categories/">주제 둘러보기</a>
+      </div>
+    </div>
+    <aside class="field-note" aria-label="블로그 편집 원칙">
+      <div class="field-note-label">EDITOR'S NOTE · 001</div>
+      <p class="field-note-quote">“빠른 소식보다<br />제대로 이해한 한 줄.”</p>
+      <ul>
+        <li><span>01</span> 공식 출처부터 확인</li>
+        <li><span>02</span> 직접 써보고 기록</li>
+        <li><span>03</span> 어려운 말은 쉽게</li>
+      </ul>
+      <div class="signature">눈삽</div>
+    </aside>
+  </section>
+
+  {featured && (
+    <section class="section shell">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">먼저 읽어보세요</p>
+          <h2>추천 노트</h2>
+        </div>
+        <span class="section-number">01</span>
+      </div>
+      <PostCard post={featured} featured />
+    </section>
+  )}
+
+  <section class="section section--tinted">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">차근차근 쌓이는 기록</p>
+          <h2>최근에 쓴 글</h2>
+        </div>
+        <a class="text-link" href="/blog/">모두 보기 →</a>
+      </div>
+      <div class="post-grid">
+        {latest.map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">관심사로 찾아보기</p>
+        <h2>주제별 노트</h2>
+      </div>
+      <span class="section-number">03</span>
+    </div>
+    <div class="category-grid">
+      {categories.map((category, index) => (
+        <a class="category-card" href={`/categories/${encodeURIComponent(category)}/`}>
+          <span class="category-index">0{index + 1}</span>
+          <h3>{category}</h3>
+          <p>{CATEGORY_DESCRIPTIONS[category] ?? 'AI를 이해하는 데 도움이 되는 글'}</p>
+          <span class="category-arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="manifesto">
+    <div class="shell manifesto-inner">
+      <p>AI 소식은 넘쳐나지만,</p>
+      <h2>내 일에 필요한 정보는<br /><span>직접 골라야 합니다.</span></h2>
+      <p class="manifesto-copy">눈삽이 먼저 읽고, 써보고, 초보자의 언어로 정리하겠습니다.</p>
+      <a href="/rss.xml" class="button button--light">RSS로 새 글 받기</a>
+    </div>
+  </section>
+</BaseLayout>
